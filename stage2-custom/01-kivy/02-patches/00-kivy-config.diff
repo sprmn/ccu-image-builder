@@ -1,0 +1,14 @@
+Index: jessie-stage2-custom/rootfs/home/pi/.kivy/config.ini
+===================================================================
+--- jessie-stage2-custom.orig/rootfs/home/pi/.kivy/config.ini
++++ jessie-stage2-custom/rootfs/home/pi/.kivy/config.ini
+@@ -40,7 +40,8 @@ shaped = 0
+
+ [input]
+ mouse = mouse
+-%(name)s = probesysfs,provider=hidinput
++mtdev_%(name)s = probesysfs,provider=mtdev
++hid_%(name)s = probesysfs,provider=hidinput
+
+ [postproc]
+ double_tap_distance = 20

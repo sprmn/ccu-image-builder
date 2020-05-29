@@ -7,3 +7,6 @@ SKIP_IMAGES
 .pc
 *-pc
 apt-cacher-ng/
+.DS_Store
+stage2-custom/04-ccu-app/files/DCU-central-control-app/
+stage2-custom/06-ccu-server/files/ccu-server/

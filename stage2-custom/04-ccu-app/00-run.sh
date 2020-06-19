@@ -14,5 +14,8 @@ EOF
 
 # Configure crontab
 on_chroot << EOF
-(crontab -u ${FIRST_USER_NAME} -l; echo "@reboot /usr/bin/python3 /home/${FIRST_USER_NAME}/${app_name}/main.py") | crontab -u ${FIRST_USER_NAME} -
+until cat /var/spool/cron/crontabs/${FIRST_USER_NAME} | grep ${app_name}; do
+  (crontab -u ${FIRST_USER_NAME} -l; echo "@reboot /usr/bin/python3 /home/${FIRST_USER_NAME}/${app_name}/main.py") | crontab -u ${FIRST_USER_NAME} -
+  sleep 1
+done
 EOF

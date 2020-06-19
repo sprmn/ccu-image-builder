@@ -18,7 +18,22 @@ on_chroot << EOF
 chown -R ${FIRST_USER_NAME}:${FIRST_USER_NAME} /home/${FIRST_USER_NAME}
 EOF
 
-# Configure crontab
+# Install pm2
 on_chroot << EOF
-(crontab -u ${FIRST_USER_NAME} -l; echo "@reboot /usr/bin/node /home/${FIRST_USER_NAME}/${app_name}/build") | crontab -u ${FIRST_USER_NAME} -
+npm i -g pm2
+EOF
+
+# Configure pm2 to start at boot
+on_chroot << EOF
+env PATH=$PATH:/usr/bin pm2 startup systemd -u ${FIRST_USER_NAME} --hp /home/${FIRST_USER_NAME}
+EOF
+
+# Add our app to pm2 services
+on_chroot << EOF
+su - ${FIRST_USER_NAME} -c "pm2 start /home/${FIRST_USER_NAME}/${app_name}/build && pm2 save && pm2 kill"
+EOF
+
+# Setup logrotation
+on_chroot << EOF
+pm2 logrotate -u ${FIRST_USER_NAME} && pm2 kill
 EOF

@@ -12,10 +12,8 @@ on_chroot << EOF
 chown -R ${FIRST_USER_NAME}:${FIRST_USER_NAME} /home/${FIRST_USER_NAME}
 EOF
 
-# Configure crontab
+# Install ccu-app service
+install -m 644 files/ccu-app.service	"${ROOTFS_DIR}/etc/systemd/system/"
 on_chroot << EOF
-until cat /var/spool/cron/crontabs/${FIRST_USER_NAME} | grep ${app_name}; do
-  (crontab -u ${FIRST_USER_NAME} -l; echo "@reboot /usr/bin/python3 /home/${FIRST_USER_NAME}/${app_name}/main.py") | crontab -u ${FIRST_USER_NAME} -
-  sleep 1
-done
+systemctl enable ccu-app
 EOF

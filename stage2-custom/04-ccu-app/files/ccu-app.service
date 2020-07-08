@@ -1,0 +1,13 @@
+[Unit]
+Description=Runs the kivy app that can be used to control the DCUs on the CCU
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /home/pi/DCU-central-control-app/main.py
+RestartSec=5
+Restart=always
+User=pi
+
+[Install]
+WantedBy=graphical.target
+

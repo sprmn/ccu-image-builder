@@ -1,0 +1,22 @@
+Index: jessie-stage2-custom/rootfs/etc/logrotate.d/rsyslog
+===================================================================
+--- jessie-stage2-custom.orig/rootfs/etc/logrotate.d/rsyslog
++++ jessie-stage2-custom/rootfs/etc/logrotate.d/rsyslog
+@@ -2,6 +2,7 @@
+ {
+ 	rotate 7
+ 	daily
++	size=10M
+ 	missingok
+ 	notifempty
+ 	delaycompress
+@@ -25,7 +26,8 @@
+ /var/log/messages
+ {
+ 	rotate 4
+-	weekly
++	daily
++	size=50M
+ 	missingok
+ 	notifempty
+ 	compress

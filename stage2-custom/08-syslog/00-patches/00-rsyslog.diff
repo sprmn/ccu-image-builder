@@ -6,7 +6,7 @@ Index: jessie-stage2-custom/rootfs/etc/logrotate.d/rsyslog
  {
  	rotate 7
  	daily
-+	size=10M
++	size 10M
  	missingok
  	notifempty
  	delaycompress
@@ -16,7 +16,7 @@ Index: jessie-stage2-custom/rootfs/etc/logrotate.d/rsyslog
  	rotate 4
 -	weekly
 +	daily
-+	size=50M
++	size 50M
  	missingok
  	notifempty
  	compress

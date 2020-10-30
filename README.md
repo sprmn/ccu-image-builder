@@ -14,7 +14,7 @@
 
 ## Networking
 
-- For WiFi you need to copy a wpa_supplicant.conf file to the /boot folder of the image after flashing it to an sd card with the following contents:
+- For WiFi you need to copy a wpa_supplicant.conf file to the /boot folder of the image after flashing it to an sd card. This is if you want the CCU to connect to an existing WiFi network. The wpa_supplicant.conf should have the following contents:
 
   ```
   ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -28,7 +28,7 @@
 
   ```
 
-- For using the pi as Access Point, run './create_ap.sh' from ssh login.
+- For using the pi as Access Point, run './create-ap.sh' (without the quotes) after ssh login.
 
 # pi-gen
 

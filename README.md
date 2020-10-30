@@ -28,7 +28,7 @@
 
   ```
 
-- For using the pi as Access Point, the steps from [this tutorial](https://thepi.io/how-to-use-your-raspberry-pi-as-a-wireless-access-point/) can be used.
+- For using the pi as Access Point, run './create_ap.sh' from ssh login.
 
 # pi-gen
 

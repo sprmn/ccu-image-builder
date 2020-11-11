@@ -23,3 +23,5 @@ piwiz
 rp-prefapps
 ffmpeg
 vlc
+git
+hostapd dnsmasq
